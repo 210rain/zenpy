@@ -364,6 +364,16 @@ class ChatEndpoint(BaseEndpoint):
         return Url(endpoint_path, params=params)
 
 
+class TalkEndpoint(BaseEndpoint):
+    def __call__(self, **kwargs):
+        endpoint_path = self.endpoint
+        params = dict()
+        for key, value in kwargs.items():
+            if key == 'stats':
+                endpoint_path  = '{}/stats/{}'.format(self.endpoint, value)
+            elif key == 'availabilities':
+                endpoint_path = '{}/availabilities/{}'.format(self.endpoint, value)
+
 class ChatSearchEndpoint(BaseEndpoint):
     def __call__(self, *args, **kwargs):
         conditions = list()
@@ -384,6 +394,8 @@ class EndpointFactory(object):
     """
     Provide access to the various endpoints.
     """
+
+    talk = TalkEndpoint('channels/voice')
 
     activities = PrimaryEndpoint('activities')
     attachments = PrimaryEndpoint('attachments')

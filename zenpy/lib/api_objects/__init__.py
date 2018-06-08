@@ -82,6 +82,64 @@ class BaseObject(object):
 
 
 
+class AccountOverview(BaseObject):
+    def __init__(self,
+                 api=None,
+                 average_accepted_transfers=None,
+                 average_available_time=None,
+                 average_calls_accepted=None,
+                 average_calls_denied=None,
+                 average_calls_missed=None,
+                 average_calls_put_on_hold=None,
+                 average_hold_time=None,
+                 average_online_time=None,
+                 average_started_transfers=None,
+                 average_talk_time=None,
+                 average_wrap_up_time=None,
+                 total_accepted_transfers=None,
+                 total_calls_accepted=None,
+                 total_calls_denied=None,
+                 total_calls_missed=None,
+                 total_calls_put_on_hold=None,
+                 total_hold_time=None,
+                 total_started_transfers=None,
+                 total_talk_time=None,
+                 total_wrap_up_time=None,
+                 **kwargs):
+
+        self.api = api
+        self.average_accepted_transfers = average_accepted_transfers
+        self.average_available_time = average_available_time
+        self.average_calls_accepted = average_calls_accepted
+        self.average_calls_denied = average_calls_denied
+        self.average_calls_missed = average_calls_missed
+        self.average_calls_put_on_hold = average_calls_put_on_hold
+        self.average_hold_time = average_hold_time
+        self.average_online_time = average_online_time
+        self.average_started_transfers = average_started_transfers
+        self.average_talk_time = average_talk_time
+        self.average_wrap_up_time = average_wrap_up_time
+        self.total_accepted_transfers = total_accepted_transfers
+        self.total_calls_accepted = total_calls_accepted
+        self.total_calls_denied = total_calls_denied
+        self.total_calls_missed = total_calls_missed
+        self.total_calls_put_on_hold = total_calls_put_on_hold
+        self.total_hold_time = total_hold_time
+        self.total_started_transfers = total_started_transfers
+        self.total_talk_time = total_talk_time
+        self.total_wrap_up_time = total_wrap_up_time
+
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+
+        for key in self.to_dict():
+            if getattr(self, key) is None:
+                try:
+                    self._dirty_attributes.remove(key)
+                except KeyError:
+                    continue
+
+
 class Activity(BaseObject):
     def __init__(self,
                  api=None,

@@ -21,6 +21,7 @@ from zenpy.lib.api import (
     ViewApi,
     SlaPolicyApi,
     ChatApi,
+    TalkApi,
     GroupMembershipApi,
     HelpCentreApi,
     RecipientAddressApi,

@@ -1264,6 +1264,9 @@ class RecipientAddressApi(CRUDApi):
     def __init__(self, config):
         super(RecipientAddressApi, self).__init__(config, object_type='recipient_address')
 
+class TalkApi(CRUDApi):
+    def __init(self, config):
+        super(TalkApi, self).__init__(config, object_type='talk', endpoint=endpoint)
 
 class ChatApiBase(Api):
     """

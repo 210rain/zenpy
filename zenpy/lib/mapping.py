@@ -91,7 +91,8 @@ class ZendeskObjectMapping(object):
         'automation': Automation,
         'dynamic_content_item': DynamicContent,
         'target': Target,
-        'locale': Locale
+        'locale': Locale,
+        'account_overview': AccountOverview
     }
 
     skip_attrs = []
